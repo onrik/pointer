@@ -5,3 +5,43 @@
 [![GoDoc](https://godoc.org/github.com/onrik/pointer?status.svg)](https://godoc.org/github.com/onrik/pointer)
 
 Helpers for working with pointers.
+
+
+## Examples
+
+```go
+package main
+
+import (
+  "time"
+
+  "github.com/onrik/pointer"
+)
+
+type User struct {
+  ID        int
+  Name      string
+  Age       *int
+  UpdatedAt *time.Time
+}
+
+func main() {
+  // Set helpers
+  user := User{
+    ID:        1,
+    Name:      "John",
+    Age:       pointer.Int(27),
+    UpdatedAt: pointer.Time(time.Now()),
+  }
+  
+  // Get helpers
+  // instead of
+  age := -1
+  if user.Age != nil {
+    age := *user.Age
+  }
+  
+  // Use
+  age := pointer.GetInt(user.Age, -1)
+}
+```
