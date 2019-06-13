@@ -13,32 +13,32 @@ Helpers for working with pointers.
 package main
 
 import (
-  "time"
+    "time"
 
-  "github.com/onrik/pointer"
+    "github.com/onrik/pointer"
 )
 
 type User struct {
-  ID        int
-  Name      string
-  Age       *int
-  UpdatedAt *time.Time
+    ID        int
+    Name      string
+    Age       *int
+    UpdatedAt *time.Time
 }
 
 func main() {
   // Set helpers
   user := User{
-    ID:        1,
-    Name:      "John",
-    Age:       pointer.Int(27),
-    UpdatedAt: pointer.Time(time.Now()),
+      ID:        1,
+      Name:      "John",
+      Age:       pointer.Int(27),
+      UpdatedAt: pointer.Time(time.Now()),
   }
   
   // Get helpers
   // instead of
   age := -1
   if user.Age != nil {
-    age := *user.Age
+      age := *user.Age
   }
   
   // Use
